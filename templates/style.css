@@ -1,0 +1,28 @@
+input[type = "submit"]{
+    font-size: 50px;
+    background-color: black;
+    color: white;
+    border: none;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+.buttons input{
+    transition: 0.2s;
+}
+.buttons input:hover{
+    background-color: rgb(92, 92, 92);
+}
+
+.buttons_middle{
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.buttons_size{
+    width: 200px; height: 200px;
+}

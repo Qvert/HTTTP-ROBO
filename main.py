@@ -1,26 +1,25 @@
 from flask import Flask, render_template, request
 import requests
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 
 @app.route('/', methods=["GET", "POST"])
 def post_buttons():
+    spisok_name_move = ['right',
+                        'left',
+                        'stop',
+                        'up',
+                        'down', ]
+
     if request.method == 'POST':
-        if request.form.get('right') == 'right':
-            print("right")
-
-        elif request.form.get('left') == 'left':
-            print("left")
-
-        elif request.form.get('up') == 'up':
-            print("up")
-
-        elif request.form.get('down') == 'down':
-            print("down")
+        for elem in spisok_name_move:
+            if request.form.get(elem) == elem:
+                print(elem)
+                break
 
         else:
-            return render_template("index.html")
+            return render_template("index.html", )
 
     elif request.method == 'GET':
 
@@ -34,8 +33,8 @@ def post_http(value: str, https=None) -> None:
     :param https: HTTP
     :return: None
     """
-    pass
+    requests.post(https, data=value)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8080, host='127.0.0.1')
