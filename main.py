@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import requests
+from loguru import logger
 
 app = Flask(__name__, static_folder='static')
 
@@ -9,17 +10,17 @@ def post_buttons():
     spisok_name_move = ['right',
                         'left',
                         'stop',
-                        'up',
-                        'down', ]
+                        'forward',
+                        'back', ]
 
     if request.method == 'POST':
         for elem in spisok_name_move:
             if request.form.get(elem) == elem:
-                print(elem)
+                logger.info(elem)
                 break
 
         else:
-            return render_template("index.html", )
+            return render_template("index.html")
 
     elif request.method == 'GET':
 
@@ -33,7 +34,12 @@ def post_http(value: str, https=None) -> None:
     :param https: HTTP
     :return: None
     """
-    requests.post(https, data=value)
+    try:
+        requests.post(https, data={'move': value})
+        logger.debug('Post well done!!!')
+
+    except Exception as _err:
+        logger.error(f'Checking code. dont post: {_err}')
 
 
 if __name__ == '__main__':

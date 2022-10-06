@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" src="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Move</title>
 
 </head>
@@ -10,13 +10,13 @@
     <form method="post" action="/">
         <div class="wraper">
             <div class = "buttons">
-                <input type="submit" value="up" name="up" class = "buttons_middle buttons_size"  />
+                <input type="submit" value="forward" name="forward" class = "buttons_middle buttons_size"  />
                 <div class = "buttons_middle" >
                     <input class = "buttons_size" type="submit" value="left"  name="left" />
                     <input class = "buttons_size" type="submit" value="stop"  name="stop" />
                     <input class = "buttons_size" type="submit" value="right" name="right"/>
                 </div>
-                <input type="submit" value="down" name="down" style = "width: 200px; height: 200px; margin: 0 auto;"  />
+                <input type="submit" value="back" name="back" style = "width: 200px; height: 200px; margin: 0 auto;"  />
             </div>
         </div>
 
